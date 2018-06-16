@@ -1,18 +1,23 @@
-// Store our API endpoint inside queryUrl
+// First, I decided which time-frame I wanted to analyze for the earth quake data from the USGS website,
+// per the instructions.  I choose to look at monthly (all month) but to filter down to only 4.5 magnitude EQs
+// and higher.......
+
+// First we store endopints:  
 var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
 
 var query2 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson"
 
-// Perform a GET request to the query URL
+// Now we need to do the "GET REQUEST below"
 d3.json(queryUrl, function(data) {
-  // Once we get a response, send the data.features object to the createFeatures function
+  // Here is the response and the corresponding object produced:
+
   createFeatures(data.features);
 });
 
 function createFeatures(earthquakeData) {
 
 
-  // Give each feature a popup describing the place and time of the earthquake
+  // This gives each resulting data point a pop-up on the map with the description, etc etc
   function onEachFeature(feature, layer) {
     layer.bindPopup("<h3>" + feature.properties.place +
       "</h3><hr><p>" + new Date(feature.properties.time) + "</p>" +
