@@ -35,21 +35,14 @@ function createFeatures(earthquakeData) {
   // Then run onEachFeature function, once for each piece of data in the array
   
   
-  // var earthquakes = L.geoJSON(earthquakeData, {
-  //   onEachFeature: onEachFeature,
-  //   pointToLayer: function (feature, latlng) {
-  //     var color;
-  //     var r = 255;
-  //     var g = Math.floor(255-80*feature.properties.mag);
-  //     var b = Math.floor(255-80*feature.properties.mag);
-  //     color= "rgb("+r+" ,"+g+","+ b+")"
+  
 
 var earthquakes = L.geoJSON(earthquakeData, {
      onEachFeature: onEachFeature,
      pointToLayer: function (feature, latlng) {
       var color;
-       var r = Math.floor(255-75*feature.properties.mag);
-      var g = Math.floor(255-95*feature.properties.mag);
+       var r = Math.floor(255-70*feature.properties.mag);
+      var g = Math.floor(255-90*feature.properties.mag);
       var b = 255;
        color= "rgb("+r+" ,"+g+","+ b+")"
 
@@ -100,17 +93,7 @@ function createMap(earthquakes) {
   });
 
   // Now we put in the coloring.
-  // function getColor(d) {
-  //     return d < 1 ? 'rgb(255,255,255)' :
-  //           d < 2  ? 'rgb(255,225,225)' :
-  //           d < 3  ? 'rgb(255,195,195)' :
-  //           d < 4  ? 'rgb(255,165,165)' :
-  //           d < 5  ? 'rgb(255,135,135)' :
-  //           d < 6  ? 'rgb(255,105,105)' :
-  //           d < 7  ? 'rgb(255,75,75)' :
-  //           d < 8  ? 'rgb(255,45,45)' :
-  //           d < 9  ? 'rgb(255,15,15)' :
-  //                       'rgb(255,0,0)';
+  
 
   function getColor(d) {
   return d < 1 ? 'rgb(270,270,255)' :
