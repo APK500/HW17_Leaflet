@@ -6,18 +6,17 @@
 // First we store endopints:   This will be 2.5 MAG, for the last 30 days-- so    5/15 to 6/15, roughly.
 var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_month.geojson"
 
-//ran some others for testing......(Commented in and out)
-// var query2 = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson"
-
-
-
+var platesUrl = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_plates.json";
 
 // Now we need to do the "GET REQUEST below"
 d3.json(queryUrl, function(data) {
+
+  d3.json(platesUrl)
   // Here is the response and the corresponding object produced:
 
   createFeatures(data.features);
 });
+
 
 function createFeatures(earthquakeData) {
 
@@ -82,6 +81,23 @@ function createMap(earthquakes) {
   var overlayMaps = {
     Earthquakes: earthquakes
   };
+
+
+
+  var faultLines = {
+    "fillColor": "orange",
+    "weight": 2,
+    "color": "orange",
+    "fillOpacity": 0
+  };
+
+  
+
+
+
+
+
+
 
   // Now create our map, giving it the streetmap and earthquakes layers to display on load
   var myMap = L.map("map", {
